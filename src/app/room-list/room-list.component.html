@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Meeting Room Booking List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Id</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Meeting Room</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let room of rooms | async">
+            <td>{{room.employeeId}}</td>
+            <td>{{room.startTime}}</td>
+            <td>{{room.endTime}}</td>
+            <td>{{room.meetingRoom.roomType}}</td>
+
+            <td><button (click)="deleteRoom(room.id)" class="btn btn-danger">Delete</button>
+              <button (click)="updateRoom(room.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                <button (click)="roomDetails(room.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,22 @@
+<h2>Room Details</h2> 
+
+<hr/>
+<div *ngIf="room">
+  <div>
+    <label><b>Name </b></label> {{room.name}}
+  </div>
+  <div>
+    <label><b> Date</b></label> {{room.date}}
+  </div>
+  <div>
+    <label><b> Start Date</b></label> {{room.startDate}}
+  </div>
+    <div>
+    <label><b> End Date</b></label> {{room.endDate}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Meeting Room Booking List</button><br>
+ 
