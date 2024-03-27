@@ -3,17 +3,29 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Employee Id</label>
-      <input type="text" class="form-control" id="employeeId" required [(ngModel)]="employeeId" name="employeeId">
+      <input type="text" class="form-control" id="employeeId" required [(ngModel)]="employeeId" name="employeeId" >
     </div>
 
     <div class="form-group">
       <label for="">Start Time</label>
-      <input type="datetime-local" class="form-control" id="date" required [(ngModel)]="startTime" name="startTime" >
+      <input type="datetime-local" class="form-control" id="date" required [(ngModel)]="startTime" name="startTime" [min]="minDateTime" [max]="maxStartDateTime" (change)="updateMinEndTime()" >
+    </div>
+
+    <!-- <div class="form-group">
+      <label for="date">Select Date</label>
+      <input type="date" class="form-control" id="date" required [(ngModel)]="selectedDate" name="selectedDate"
+        [min]="minDate" [max]="maxDate">
     </div>
 
     <div class="form-group">
+      <label for="time">Select Time</label>
+      <input type="time" class="form-control" id="time" required [(ngModel)]="selectedTime" name="selectedTime"
+        [min]="minTime" [max]="maxTime">
+    </div> -->
+
+    <div class="form-group">
         <label for="name">End Time</label>
-        <input type="datetime-local"  class="form-control" id="endTime" required [(ngModel)]="endTime" name="endTime">
+        <input type="datetime-local"  class="form-control" id="endTime" required [(ngModel)]="endTime" name="endTime" [min]="startTime" [max]="maxDateTime">
     </div>
 
     <div class="form-group">
@@ -23,7 +35,7 @@
      
     <div class="form-group">
         <label for="name">Purpose Of Booking</label>
-        <input type="text"  class="form-control" id="purposeOfBooking" required [(ngModel)]="purposeOfBooking" name="purposeOfBooking">
+        <input type="text"  class="form-control" id="purposeOfBooking" required [(ngModel)]="purposeOfBooking" name="purposeOfBooking" >
     </div>
 
   <div class="form-group">
@@ -32,14 +44,12 @@
       <option *ngFor="let option of options" [ngValue]="option">{{ option.roomType }}</option>
     </select>
   </div>
- 
   
 
-
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!startTime || !employeeId || !endTime || !department || !purposeOfBooking || !selectedOption ">Submit</button>
   </form>
 </div>
 
 <div [hidden]="!submitted">
-  <button class="btn btn-success" (click)="newRoom()">Add</button> -->
+  <button class="btn btn-success" (click)="newRoom()">Add</button>
 </div>

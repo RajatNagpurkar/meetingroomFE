@@ -12,6 +12,13 @@ import { RoomType } from 'src/roomtype';
 })
 export class CreateRoomComponent implements OnInit {
 
+  minDate: string;
+  maxDate: string;
+  minTime: string;
+  maxTime: string;
+  minDateTime: string;
+  maxDateTime: string;
+  maxStartDateTime: string;
   room: Room = new Room();
   submitted = false;
   employeeId: string;
@@ -39,15 +46,30 @@ export class CreateRoomComponent implements OnInit {
   
 
   constructor(private roomService: RoomService,
-    private router: Router) { }
+    private router: Router) { 
+      const currentDateTime = new Date();
+      currentDateTime.setSeconds(0); // Round seconds to 0
+      currentDateTime.setMilliseconds(0); // Round milliseconds to 0
+      this.minDateTime = currentDateTime.toISOString().slice(0, 16);
+      console.log("min time",this.minDateTime)
+      this.maxStartDateTime = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 16);
+      this.maxDateTime = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 16);
+    }
 
   ngOnInit() {
-    
   }
 
   newRoom(): void {
     this.submitted = false;
     this.room = new Room();
+  }
+
+  updateMinEndTime(): void {
+    if (this.startTime) {
+      // Calculate the maximum date and time (8 hours from the start time)
+      const startDateTime = new Date(this.startTime);
+      this.maxDateTime = new Date(startDateTime.getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 16);
+    }
   }
 
   save(room: Room) {
@@ -59,7 +81,7 @@ export class CreateRoomComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log("values",this.selectedOption)
+    console.log("values",this.startTime)
     let room = new Room()
     room.startTime = this.startTime;
     room.employeeId = this.employeeId;

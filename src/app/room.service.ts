@@ -20,7 +20,8 @@ export class RoomService {
   }
 
   updateRoom(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/fetch/${id}`, value);
+  
+    return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
   deleteRoom(id: number): Observable<any> {

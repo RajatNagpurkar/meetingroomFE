@@ -9,10 +9,10 @@
     <label><b> Department</b></label> {{room.department}}
   </div>
   <div>
-    <label><b> Start Time</b></label> {{room.startTime}}
+    <label><b> Start Time</b></label> {{room.startTime | date: 'MMM d, y, h:mm:ss a'}}
   </div>
     <div>
-    <label><b> End Time</b></label> {{room.endTime}}
+    <label><b> End Time</b></label> {{room.endTime | date: 'MMM d, y, h:mm:ss a'}}
   </div>
 </div>
 

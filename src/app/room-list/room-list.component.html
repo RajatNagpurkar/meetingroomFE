@@ -16,8 +16,8 @@
         <tbody>
           <tr *ngFor="let room of rooms | async">
             <td>{{room.employeeId}}</td>
-            <td>{{room.startTime}}</td>
-            <td>{{room.endTime}}</td>
+            <td>{{room.startTime | date: 'MMM d, y, h:mm:ss a'}}</td>
+            <td>{{room.endTime | date: 'MMM d, y, h:mm:ss a'}}</td>
             <td>{{room.meetingRoom.roomType}}</td>
 
             <td><button (click)="deleteRoom(room.id)" class="btn btn-danger">Delete</button>
