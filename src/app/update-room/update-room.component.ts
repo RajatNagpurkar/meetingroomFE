@@ -51,8 +51,29 @@ export class UpdateRoomComponent implements OnInit {
   }
 
   updateRoom() {
+    console.log("----",this.room);
+    
+    const indexOfSeconds = this.room.startTime.lastIndexOf(":00");
+    if (indexOfSeconds !== -1) {
+        // Remove seconds part
+        this.room.startTime = this.room.startTime.substring(0, indexOfSeconds);
+    }
+
+    const indexOfEndTimeSeconds = this.room.endTime.lastIndexOf(":00");
+    if (indexOfEndTimeSeconds !== -1) {
+        // Remove seconds part
+        this.room.endTime = this.room.endTime.substring(0, indexOfEndTimeSeconds);
+    }
+
     this.roomService.updateRoom(this.id, this.room)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data);
+        alert(data);
+      }, 
+      error => {
+        console.log(error);
+        alert(error.error);
+      });
     this.room = new Room();
     this.gotoList();
   }
@@ -65,6 +86,7 @@ export class UpdateRoomComponent implements OnInit {
     room.startTime = this.startTime;
     room.endTime = this.endTime;
     room.department = this.department;
+    console.log("room",this.room);
     this.updateRoom();    
   }
 

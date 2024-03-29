@@ -15,13 +15,13 @@ export class RoomService {
     return this.http.get(`${this.baseUrl}/fetch/${id}`);
   }
 
-  createRoom(room: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/book`, room);
+  createRoom(room: Object): Observable<any> {
+    return this.http.post(`${this.baseUrl}/book`, room, { responseType: 'text' });
   }
 
   updateRoom(id: number, value: any): Observable<Object> {
   
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+    return this.http.put(`${this.baseUrl}/${id}`, value, { responseType: 'text' });
   }
 
   deleteRoom(id: number): Observable<any> {

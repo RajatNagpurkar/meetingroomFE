@@ -22,6 +22,7 @@ export class CreateRoomComponent implements OnInit {
   room: Room = new Room();
   submitted = false;
   employeeId: string;
+  name: string;
   startTime:string;
   endTime:string;
   department:string;
@@ -74,7 +75,14 @@ export class CreateRoomComponent implements OnInit {
 
   save(room: Room) {
     this.roomService.createRoom(room)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data);
+        alert(data)
+      }
+        , error => {
+          console.log(error);
+          alert(error.error);
+        });
     this.room = new Room();
     this.gotoList();
   }
@@ -85,6 +93,7 @@ export class CreateRoomComponent implements OnInit {
     let room = new Room()
     room.startTime = this.startTime;
     room.employeeId = this.employeeId;
+    room.name = this.name;
     room.startTime = this.startTime;
     room.endTime = this.endTime;
     room.department = this.department;

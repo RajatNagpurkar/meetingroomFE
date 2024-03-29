@@ -5,7 +5,12 @@
   <form (ngSubmit)="updateRoom()">
     <div class="form-group">
       <label for="name">Employee Id</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="room.employeeId" name="name" disabled="true">
+      <input type="text" class="form-control" id="employeeId" required [(ngModel)]="room.employeeId" name="employeeId" disabled="true">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="room.name" name="name" disabled="true">
     </div>
 
     <div class="form-group">

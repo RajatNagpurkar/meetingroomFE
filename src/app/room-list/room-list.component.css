@@ -1,0 +1,7 @@
+.table-full-width {
+    width: 100%; /* Ensure table takes full width of its container */
+  }
+  #panel-body {
+    height: calc(100vh - 120px); /* Calculate height based on viewport height minus panel header height */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds panel body height */
+  }

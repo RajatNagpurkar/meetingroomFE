@@ -29,6 +29,7 @@ export class RoomListComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          alert(data);
           this.reloadData();
         },
         error => console.log(error));

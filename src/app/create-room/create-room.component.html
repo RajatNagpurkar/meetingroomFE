@@ -7,6 +7,11 @@
     </div>
 
     <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" >
+    </div>
+
+    <div class="form-group">
       <label for="">Start Time</label>
       <input type="datetime-local" class="form-control" id="date" required [(ngModel)]="startTime" name="startTime" [min]="minDateTime" [max]="maxStartDateTime" (change)="updateMinEndTime()" >
     </div>
@@ -46,7 +51,7 @@
   </div>
   
 
-    <button type="submit" class="btn btn-success" [disabled]="!startTime || !employeeId || !endTime || !department || !purposeOfBooking || !selectedOption ">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!startTime || !employeeId || !endTime || !department || !purposeOfBooking || !selectedOption || !name">Submit</button>
   </form>
 </div>
 

@@ -2,11 +2,12 @@
     <div class="panel-heading">
       <h2>Meeting Room Booking List</h2>
     </div>
-    <div class="panel-body">
-      <table class="table table-striped">
+    <div class="panel-body" id="panel-body">
+      <table class="table table-striped table-full-width">
         <thead>
           <tr>
             <th>Employee Id</th>
+            <th>Name</th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Meeting Room</th>
@@ -16,13 +17,14 @@
         <tbody>
           <tr *ngFor="let room of rooms | async">
             <td>{{room.employeeId}}</td>
+            <td>{{room.name}}</td>
             <td>{{room.startTime | date: 'MMM d, y, h:mm:ss a'}}</td>
             <td>{{room.endTime | date: 'MMM d, y, h:mm:ss a'}}</td>
             <td>{{room.meetingRoom.roomType}}</td>
 
             <td><button (click)="deleteRoom(room.id)" class="btn btn-danger">Delete</button>
               <button (click)="updateRoom(room.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="roomDetails(room.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                <!-- <button (click)="roomDetails(room.id)" class="btn btn-info" style="margin-left: 10px">Details</button> -->
             </td>
           </tr>
         </tbody>
